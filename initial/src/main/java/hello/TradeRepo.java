@@ -24,6 +24,8 @@ public class TradeRepo {
 			data = "{}";
 			tradeUpdates = 100;
 		}
+		String getData() {return data;}
+		Integer getTradeUpdates() {return new Integer(tradeUpdates);}
 	}
 
 	public TradeDetails getTradeDetails(int tradeId, String tradeType, HttpServletResponse response)
@@ -62,7 +64,7 @@ public class TradeRepo {
 		if (tradeId < 10000) {
 			// retrieve trade details from internal database
 			for (int nn=0; nn<10000000; nn++) {tradeCt=nn;}
-			ret.tradeUpdates = tradeId;
+			ret.tradeUpdates = rand.nextInt(((max - min) + 1) + min);
 
 			try{Thread.sleep(3000);} catch(java.lang.InterruptedException ex) {}
 			response_.setStatus(HttpServletResponse.SC_ACCEPTED);
